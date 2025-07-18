@@ -4,13 +4,14 @@ import IngredientSearch from './components/IngredientSearch';
 import NameSearch from './components/NameSearch';
 import SavedRecipes from './components/SavedRecipes';
 import ThemeToggle from './components/ThemeToggle';
+import { API_CONFIG } from './config/api';
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     // Check if user is logged in on mount
-    fetch('http://localhost:5000/api/user/me', {
+    fetch(`${API_CONFIG.USER_API}/me`, {
       credentials: 'include',
     })
       .then(res => res.ok ? res.json() : null)
