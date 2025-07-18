@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     // Check if user is logged in on mount
-    fetch('http://localhost:5000/api/user/me', {
+    fetch((import.meta.env.VITE_API_URL + '/api/user/me'), {
       credentials: 'include',
     })
       .then(res => res.ok ? res.json() : null)

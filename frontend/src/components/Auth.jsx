@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const API_USER = 'http://localhost:5000/api/user';
+const API_USER = import.meta.env.VITE_API_URL + '/api/user';
 
 export default function Auth({ onAuthChange, user, setUser }) {
   const [isLogin, setIsLogin] = useState(true);

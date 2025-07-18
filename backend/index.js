@@ -8,8 +8,13 @@ dotenv.config();
 console.log("Spoonacular API Key:", process.env.SPOONACULAR_API_KEY);
 const app = express()
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL // e.g., https://your-frontend.onrender.com
+];
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: allowedOrigins,
   credentials: true,
 }))
 

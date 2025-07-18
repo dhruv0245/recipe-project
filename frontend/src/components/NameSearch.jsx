@@ -23,7 +23,7 @@ function StarRating({ rating, setRating }) {
   );
 }
 
-const API_BASE = 'http://localhost:5000/api/recipe';
+const API_BASE = import.meta.env.VITE_API_URL + '/api/recipe';
 
 export default function NameSearch({ user, onSave }) {
   const [name, setName] = useState('');
