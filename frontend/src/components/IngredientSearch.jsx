@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { API_CONFIG } from '../config/api';
+
+const API_BASE = 'http://localhost:5000/api/recipe';
 
 function StarRating({ rating, setRating }) {
   return (
@@ -46,7 +47,7 @@ export default function IngredientSearch({ user, onSave }) {
     setSavedMsg('');
     setRatings({});
     try {
-      const res = await fetch(`${API_CONFIG.RECIPE_API}/by-ingredients`, {
+      const res = await fetch(`${API_BASE}/by-ingredients`, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -66,7 +67,7 @@ export default function IngredientSearch({ user, onSave }) {
     setSavedMsg('');
     const rating = ratings[recipe.id] || 0;
     try {
-      const res = await fetch(`${API_CONFIG.RECIPE_API}/save`, {
+      const res = await fetch(`${API_BASE}/save`, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

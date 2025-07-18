@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { API_CONFIG } from '../config/api';
+
+const API_USER = 'http://localhost:5000/api/user';
 
 export default function Auth({ onAuthChange, user, setUser }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -16,7 +17,7 @@ export default function Auth({ onAuthChange, user, setUser }) {
     try {
       const endpoint = isLogin ? '/login' : '/signup';
       const body = isLogin ? { email: form.email, password: form.password } : form;
-      const res = await fetch(API_CONFIG.USER_API + endpoint, {
+      const res = await fetch(API_USER + endpoint, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -37,7 +38,7 @@ export default function Auth({ onAuthChange, user, setUser }) {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(API_CONFIG.USER_API + '/logout', {
+      const res = await fetch(API_USER + '/logout', {
         method: 'POST',
         credentials: 'include',
       });

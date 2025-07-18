@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { API_CONFIG } from '../config/api';
+
+const API_BASE = 'http://localhost:5000/api/recipe';
 
 function StarRatingDisplay({ rating }) {
   return (
@@ -71,7 +72,7 @@ export default function SavedRecipes({ user }) {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(`${API_CONFIG.RECIPE_API}/saved`, {
+      const res = await fetch(`${API_BASE}/saved`, {
         credentials: 'include',
       });
       const data = await res.json();
@@ -93,7 +94,7 @@ export default function SavedRecipes({ user }) {
   const deleteRecipe = async (id) => {
     setMsg('');
     try {
-      const res = await fetch(`${API_CONFIG.RECIPE_API}/delete/${id}`, {
+      const res = await fetch(`${API_BASE}/delete/${id}`, {
         method: 'DELETE',
         credentials: 'include',
       });
